@@ -1,5 +1,6 @@
 package es.urjc.code.daw.library.book;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,4 +44,8 @@ public class BookService {
 		repository.deleteById(id);
 		notificationService.notify("Book Event: book with id="+id+" was deleted");
 	}
+
+    public Collection<Book> findByTitle(String title) {
+        return repository.findByTitle(title);
+    }
 }
