@@ -1,5 +1,6 @@
 package es.urjc.code.daw.library.web;
 
+import java.util.Collection;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class BookWebController {
 		model.addAttribute("books", service.findAll());
 		
 		return "books";
+	}
+	
+	@GetMapping("/{title}")
+	public Collection<Book> getBooksByTitle(@PathVariable String title) {
+		return service.findByTitle(title);
 	}
 	
 	@GetMapping("/books/{id}")
